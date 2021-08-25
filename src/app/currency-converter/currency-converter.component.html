@@ -1,0 +1,35 @@
+<form #conversionForm="ngForm">
+
+  <h1>amount</h1>
+  <mat-form-field class="example-form-field" appearance="fill">
+    <mat-label>amount</mat-label>
+    <input matInput type="number" ngModel name="amount" #amount="ngModel">
+  </mat-form-field>
+
+  <h1>from</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose an option</mat-label>
+    <mat-select ngModel name="from">
+      <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <h1>to</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose an option</mat-label>
+    <mat-select ngModel name="to">
+      <mat-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br>
+
+  <button mat-raised-button color="primary" (click)="getConvertedAmount(conversionForm.value)">CONVERT</button>
+
+</form>
+
+<div *ngIf="convertedAmount" style="margin-top: 20px;">
+  <h1>converted amount</h1>
+  <h4>{{convertedAmount}}</h4>
+</div>
+
